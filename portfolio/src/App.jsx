@@ -33,7 +33,7 @@ const App = () => {
             return;
         }
         try {
-            const data = await fetch("http://localhost:1000/send", {
+            const data = await fetch("https://portfolio-backend-two-gilt.vercel.app/send", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name: name, email: email, message: message })
