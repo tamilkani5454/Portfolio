@@ -87,7 +87,7 @@ const App = () => {
                         <div className='flex flex-col items-center justify-center gap-2.5 text-center'>
                             <span className='flex gap-2'><h1 className='font-bold text-white text-xl flex'>Hi,I'm</h1><h1 className='font-bold text-blue-500 text-xl flex '>Thamizhkani</h1></span>
                             <h1 className='font-bold text-xl flex px-2 text-blue-500 '> MERN Stack & DevOps Engineer</h1>
-                            <a href="../public/thamizhkani_resume.pdf" download="Thamizhkani_Resume.pdf" className='flex bg-[#1E293B] text-white hover:shadow-[0_0_10px_rgba(59,130,246,0.6)] active:shadow-[0_0_10px_rgba(59,130,246,0.6)] p-2 rounded-2xl font-medium  text-center'>Download CV</a>
+                            <a href="/thamizhkani_resume.pdf" download="Thamizhkani_Resume.pdf" className='flex bg-[#1E293B] text-white hover:shadow-[0_0_10px_rgba(59,130,246,0.6)] active:shadow-[0_0_10px_rgba(59,130,246,0.6)] p-2 rounded-2xl font-medium  text-center'>Download CV</a>
                         </div>
                     </div>
                     <div className='flex flex-wrap gap-3.5 items-center justify-center py-3 shadow-md px-5 md:items-stretch md:justify-evenly md:py-10 md:px-20 ' >
@@ -242,7 +242,7 @@ const App = () => {
                             <a href="mailto:thamizhkani5454@gmail.com" className="text-gray-400 hover:text-blue-700 text-2xl transition-all"><FaEnvelope /></a>
                             <a href="https://www.linkedin.com/in/thamizhkani-p-438648306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-700 text-2xl transition-all"><FaLinkedin /></a>
                             <a href="https://github.com/tamilkani5454" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-700 text-2xl transition-all"><FaGithub /></a>
-                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-700 text-2xl transition-all"><FaFilePdf /></a>
+                            <a href="/thamizhkani_resume.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-700 text-2xl transition-all"><FaFilePdf /></a>
                             <a href="https://www.instagram.com/thamizh_kani_?igsh=dGkxYTZ4eXY0ZmZo " target="_blank" className="text-gray-400 hover:text-blue-700 text-2xl transition-all"><FaInstagram /></a>
                         </div>
                     </div>
