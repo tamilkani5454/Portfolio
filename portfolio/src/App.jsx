@@ -7,6 +7,8 @@ import { FaCode, FaCloudUploadAlt, FaServer, FaPaintBrush, FaLinkedin, FaBars, F
 import { RiCodeSSlashLine } from "react-icons/ri";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const icons = {
     FaCode: <FaCode className="text-blue-700 text-3xl" />,
@@ -18,6 +20,10 @@ const icons = {
 
 
 const App = () => {
+    AOS.init({
+        duration: 700,
+        offset: 40,
+      });
     const [menuOpen, setMenuOpen] = useState(false);
     const [name, setName] = useState(false);
     const [email, setEmail] = useState(false);
@@ -27,7 +33,8 @@ const App = () => {
     const Projects = projects
     const services = service
 
-    const sendmail = async () => {
+    const sendmail = async (e) => {
+        e.preventDefault()
         if (!name || !email || !message) {
             toast.error('Please fill all the fields!');
             return;
@@ -47,9 +54,11 @@ const App = () => {
 
             }
         }
-        finally { }
-
-
+        finally {   
+            setName(false);
+            setEmail(false);
+            setMessage(false);
+         }
     }
 
 
@@ -71,7 +80,7 @@ const App = () => {
                     </div>
                 </div>
             </div>
-            <div className={`${menuOpen ? 'translate-y-0 visible' : '-translate-y-[1100px] invisible'} capitalize font-bold text-white fixed flex flex-col  gap-5  items-center py-3 duration-700 bg-[#040b20] w-full  md:hidden `}>
+            <div className={`${menuOpen ? 'translate-y-0 visible' : '-translate-y-[1100px] invisible'} capitalize font-bold text-white fixed flex flex-col  gap-5  items-center py-3 duration-700 bg-[#040b20] z-50 w-full  md:hidden `}>
                 <a onClick={() => setMenuOpen(false)} href="#about">about</a>
                 <a onClick={() => setMenuOpen(false)} href="#skills">skills</a>
                 <a onClick={() => setMenuOpen(false)} href="#projects">projects</a>
@@ -90,10 +99,10 @@ const App = () => {
                             <a href="/thamizhkani_resume.pdf" download="Thamizhkani_Resume.pdf" className='flex bg-[#1E293B] text-white hover:shadow-[0_0_10px_rgba(59,130,246,0.6)] active:shadow-[0_0_10px_rgba(59,130,246,0.6)] p-2 rounded-2xl font-medium  text-center'>Download CV</a>
                         </div>
                     </div>
-                    <div className='flex flex-wrap gap-3.5 items-center justify-center py-3 shadow-md px-5 md:items-stretch md:justify-evenly md:py-10 md:px-20 ' >
+                    <div  className='flex flex-wrap gap-3.5 items-center justify-center py-3 shadow-md px-5 md:items-stretch md:justify-evenly md:py-10 md:px-20 ' >
                         {aboutMe.map((info, index) => {
                             return (
-                                <div key={index} className='bg-[#1E293B] px-4 py-2 rounded-xl text-sm sm:text-base transition transform hover:-translate-y-1 hover:shadow-[0_0_10px_rgba(59,130,246,0.6)] md:w-70 md:h-50 items-centre justify-center' >
+                                <div key={index} data-aos="fade-up" className='bg-[#1E293B] px-4 py-2 rounded-xl text-sm sm:text-base transition transform hover:-translate-y-1 hover:shadow-[0_0_10px_rgba(59,130,246,0.6)] md:w-70 md:h-50 items-centre justify-center' >
                                     <p className='text-[#9aa8bd]'>{info.about}</p>
                                 </div>
                             )
@@ -110,7 +119,7 @@ const App = () => {
                     <div className='grid grid-cols-1 gap-3 md:grid-cols-2' >
                         {skills.map((skill, index) => {
                             return (
-                                <div className=" text-white px-6 py-5 rounded-xl max-w-md mx-auto" key={index}>
+                                <div data-aos="fade-up" className=" text-white px-6 py-5 rounded-xl max-w-md mx-auto" key={index}>
                                     <h2 className="text-2xl font-semibold text-blue-500 text-center mb-4">{skill.head}</h2>
 
                                     <div className="flex flex-wrap justify-center gap-3">
@@ -178,44 +187,15 @@ const App = () => {
                     </div>
                 </div>
 
-
-                {/* <div className='bg-[#02091a]'>
-                    <div>
-                        <h1>Latest Projects</h1>
-                        <p>A showcase of my recent work in web deveopment</p>
-                    </div>
-                    <div>
-                        {Projects.map((project, index) => {
-                            return (
-                                <div key={index}>
-                                    <img src={project.image} alt="" className='w-60' />
-                                    <div>
-                                        <h1>{project.head}</h1>
-                                        <p>{project.description}</p>
-                                        <div>
-                                            <p>{project.tools1}</p>
-                                            <p>{project.tools2}</p>
-                                            <p>{project.tools3}</p>
-                                            <p>{project.tools4}</p>
-                                            <p>{project.tools5}</p>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div> */}
-
             </section>
 
             {/*  ---------------------------------------------SERVICES SESSION  ---------------------------------------------*/}
             <section id='service'>
-                <div className=" bg-slate-900 flex flex-col items-center justify-center px-7 pt-12 gap-3 ">
+                <div className=" bg-slate-900 flex flex-col items-center justify-center px-7 pt-14 gap-3 ">
                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-3"><span className="text-white">My </span><span className="text-blue-500"> Services</span></h1>
                     <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center pb-6'>
                         {services.map((item, index) => (
-                            <div key={index} className="bg-[#02091a] p-6 rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300">
+                            <div key={index} data-aos="fade-up" className="bg-[#02091a] p-6 rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300">
                                 <div className="flex flex-col text-center items-center gap-3 mb-3">
                                     {icons[item.icon]}
                                     <h3 className="text-white text-xl font-semibold">{item.head}</h3>
@@ -247,13 +227,13 @@ const App = () => {
                         </div>
                     </div>
                     {/* --- Contact Form --- */}
-                    <form action="#" className="bg-gray-800 rounded-2xl p-6 sm:p-10 shadow-lg space-y-5">
-                        <div className="flex flex-col sm:flex-row gap-5">
+                    <form action="#" onSubmit={sendmail} className="bg-gray-800 rounded-2xl p-6 sm:p-10 shadow-lg space-y-5">
+                        <div data-aos="fade-up" className="flex flex-col sm:flex-row gap-5">
                             <input type="text" placeholder="Name" className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-blue-600" onChange={(e) => setName(e.target.value)} />
                             <input type="email" placeholder="Email" className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-blue-600" onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <textarea placeholder="Message" rows="5" className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-blue-600" onChange={(e) => setMessage(e.target.value)}></textarea>
-                        <button type="submit" className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition-all" onClick={sendmail}>Send Message</button>
+                        <button type="submit" className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition-all" >Send Message</button>
                     </form>
                 </div>
             </section>
