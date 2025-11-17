@@ -22,7 +22,7 @@ const icons = {
 const App = () => {
     AOS.init({
         duration: 700,
-        offset: 40,
+        offset: 60,
       });
     const [menuOpen, setMenuOpen] = useState(false);
     const [name, setName] = useState(false);
